@@ -6,7 +6,7 @@ import { Epic } from 'redux-observable';
 
 import { ContainerState as LanguageProviderState } from 'containers/LanguageProvider/types';
 import { AppState } from 'containers/App/types';
-import { ContainerState as HomeState } from 'containers/HomePage/types';
+import { HomePageState } from 'containers/HomePage/types';
 
 export type Action = ActionType<any>;
 
@@ -39,7 +39,7 @@ export interface ApplicationRootState {
   readonly router: RouterState;
   readonly global: AppState;
   readonly language: LanguageProviderState;
-  readonly home: HomeState;
+  readonly homePage: HomePageState;
   // for testing purposes
   readonly test: any;
 }

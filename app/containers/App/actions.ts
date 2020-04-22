@@ -6,3 +6,6 @@ export const triggerSearch = (term: string) =>
 
 export const setSearchTerm = (term: string) =>
   action(ActionTypes.GLOBAL_SET_SEARCH_TERM, term);
+
+export const setErrorMessage = (message: string) =>
+  action(ActionTypes.GLOBAL_SET_ERROR_MESSAGE, message);

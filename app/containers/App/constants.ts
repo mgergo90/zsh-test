@@ -9,6 +9,7 @@
 export enum ActionTypes {
   GLOBAL_TRIGGER_SEARCH = '@@app/triggerSearch',
   GLOBAL_SET_SEARCH_TERM = '@@global/setSearchTerm',
+  GLOBAL_SET_ERROR_MESSAGE = '@@global/setErrorMessage',
 }
 
 export const key = 'global';

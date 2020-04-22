@@ -7,6 +7,7 @@ describe('appReducer', () => {
   beforeEach(() => {
     state = {
       term: '',
+      error: '',
     };
   });
 

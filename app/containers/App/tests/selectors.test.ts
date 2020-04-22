@@ -1,5 +1,4 @@
-import { makeSelectLocation, selectPath } from '../selectors';
-import { ApplicationRootState } from 'types';
+import { makeSelectLocation, selectPath, selectSearchTerm } from '../selectors';
 
 describe('makeSelectLocation', () => {
   it('should select the location', () => {
@@ -20,5 +19,15 @@ describe('makeSelectLocation', () => {
       router,
     };
     expect(selectPath(mockedState)).toEqual('/foo');
+  });
+
+  it('should select serch term', () => {
+    const global = {
+      global: { term: 'foo' },
+    };
+    const mockedState: any = {
+      global,
+    };
+    expect(selectSearchTerm(mockedState)).toEqual('foo');
   });
 });

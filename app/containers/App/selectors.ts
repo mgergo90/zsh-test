@@ -9,4 +9,9 @@ const makeSelectLocation = () =>
 export const selectPath = (state: ApplicationRootState) =>
   selectRoute(state).location.pathname;
 
+export const selectSearchTerm = (state: ApplicationRootState) =>
+  state.global.term;
+
+export const selectError = (state: ApplicationRootState) => state.global.error;
+
 export { makeSelectLocation };

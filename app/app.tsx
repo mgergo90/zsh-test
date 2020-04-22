@@ -13,7 +13,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
@@ -36,7 +35,6 @@ import { translationMessages } from 'i18n';
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app') as HTMLElement;
-
 const render = (messages: any, Component = App) => {
   ReactDOM.render(
     // tslint:disable-next-line:jsx-wrap-multiline

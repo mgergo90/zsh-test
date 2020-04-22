@@ -9,6 +9,7 @@ export const useAppBarStyle = makeStyles((theme: Theme) =>
   createStyles({
     grow: {
       flexGrow: 1,
+      marginBottom: '30px',
     },
     search: {
       position: 'relative',

@@ -3,11 +3,7 @@ import { TestScheduler } from 'rxjs/testing';
 import history from 'utils/history';
 import * as actions from '../actions';
 import * as epic from '../epic';
-import { ActionsObservable, StateObservable } from 'redux-observable';
-import { AppActions } from '../types';
-import { Subject } from 'rxjs';
-import { ApplicationRootState } from 'types';
-import { selectPath } from '../selectors';
+import { ActionsObservable } from 'redux-observable';
 
 jest.mock('utils/history');
 

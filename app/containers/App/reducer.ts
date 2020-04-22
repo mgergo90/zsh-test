@@ -5,6 +5,7 @@ import { ActionTypes } from './constants';
 // The initial state of the App
 export const initialState: AppState = {
   term: '',
+  error: '',
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -16,6 +17,10 @@ const appReducer = (
     switch (action.type) {
       case ActionTypes.GLOBAL_SET_SEARCH_TERM:
         draft.term = action.payload;
+        draft.error = '';
+        break;
+      case ActionTypes.GLOBAL_SET_ERROR_MESSAGE:
+        draft.error = action.payload;
         break;
     }
   });

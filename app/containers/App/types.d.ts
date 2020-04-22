@@ -5,4 +5,5 @@ export type AppActions = ActionType<typeof actions>;
 
 export interface AppState {
   term: string;
+  error: string;
 }
