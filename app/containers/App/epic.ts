@@ -3,7 +3,6 @@ import {
   switchMap,
   filter,
   withLatestFrom,
-  throttleTime,
   debounceTime,
 } from 'rxjs/operators';
 import { isOfType } from 'typesafe-actions';
@@ -22,7 +21,7 @@ export const triggerSearch = (
 ) =>
   action$.pipe(
     filter(isOfType(ActionTypes.GLOBAL_TRIGGER_SEARCH)),
-    debounceTime(500),
+    debounceTime(250),
     withLatestFrom(state$),
     switchMap(([action, state]: WithState<AppActions>) => {
       if (selectPath(state) !== '/') {
