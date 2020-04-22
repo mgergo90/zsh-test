@@ -6,3 +6,9 @@
  * reducers accidentally picking up actions they shouldn't.
  *
  */
+export enum ActionTypes {
+  GLOBAL_TRIGGER_SEARCH = '@@app/triggerSearch',
+  GLOBAL_SET_SEARCH_TERM = '@@global/setSearchTerm',
+}
+
+export const key = 'global';

@@ -8,7 +8,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 describe('configureStore', () => {
   let store: InjectedStore;
-
+  // hide false warning from output
+  jest.spyOn(global.console, 'warn').mockImplementation(() => jest.fn());
   beforeAll(() => {
     store = configureStore({}, history);
   });
@@ -19,7 +20,6 @@ describe('configureStore', () => {
     });
   });
 });
-
 
 jest.mock('redux-devtools-extension', () => ({
   composeWithDevTools: jest.fn(),

@@ -3,7 +3,7 @@
 exports[`<NotFound /> should render and match the snapshot 1`] = `
 <article>
   <h1>
-    This is the NotFoundPage container!
+    Page not found.
   </h1>
 </article>
 `;

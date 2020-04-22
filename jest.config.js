@@ -3,6 +3,7 @@ module.exports = {
   collectCoverageFrom: [
     'app/**/*.{js,jsx,ts,tsx}',
     '!app/**/*.test.{js,jsx,ts,tsx}',
+    '!app/**/*.style.{js,jsx,ts,tsx}',
     '!app/*/RbGenerated*/*.{js,jsx,ts,tsx}',
     '!app/app.tsx',
     '!app/global-styles.ts',
@@ -30,7 +31,6 @@ module.exports = {
   },
   setupFilesAfterEnv: [
     '<rootDir>/internals/testing/test-bundler.js',
-    '@testing-library/react/cleanup-after-each',
     '@testing-library/jest-dom/extend-expect',
   ],
   testRegex: 'tests/.*\\.test\\.(js|ts(x?))$',

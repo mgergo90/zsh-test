@@ -5,7 +5,7 @@ import { ActionType } from 'typesafe-actions';
 import { Epic } from 'redux-observable';
 
 import { ContainerState as LanguageProviderState } from 'containers/LanguageProvider/types';
-import { ContainerState as AppState } from 'containers/App/types';
+import { AppState } from 'containers/App/types';
 import { ContainerState as HomeState } from 'containers/HomePage/types';
 
 export type Action = ActionType<any>;

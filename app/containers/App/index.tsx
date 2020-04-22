@@ -9,19 +9,39 @@
 
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Container, CssBaseline } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import ZshAppBar from 'components/AppBar';
+import { triggerSearch } from './actions';
+import useInjectEpic from 'utils/injectEpic';
+import epic from './epic';
+import { key } from './constants';
+import reducer from './reducer';
+import { useInjectReducer } from 'utils/injectReducer';
 
-import GlobalStyle from '../../global-styles';
-export default function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  useInjectEpic({ key, epic });
+  useInjectReducer({ key, reducer });
+
   return (
     <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={NotFoundPage} />
-      </Switch>
-      <GlobalStyle />
+      <CssBaseline />
+      <ZshAppBar
+        onChange={event => {
+          dispatch(triggerSearch(event.target.value));
+        }}
+      />
+      <Container maxWidth="lg">
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </Container>
     </div>
   );
-}
+};
+export default App;

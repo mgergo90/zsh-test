@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppBar /> should render and match the snapshot 1`] = `
+<div
+  className="makeStyles-grow-1"
+>
+  <WithStyles(ForwardRef(AppBar))
+    position="static"
+  >
+    <WithStyles(ForwardRef(Container))
+      maxWidth="lg"
+    >
+      <WithStyles(ForwardRef(Toolbar))
+        className="makeStyles-toolbar-5"
+      >
+        <div
+          className="makeStyles-search-2"
+        >
+          <div
+            className="makeStyles-searchIcon-3"
+          >
+            <Memo(SearchIcon) />
+          </div>
+          <WithStyles(ForwardRef(InputBase))
+            classes={
+              Object {
+                "input": "makeStyles-inputInput-6",
+                "root": "makeStyles-inputRoot-4",
+              }
+            }
+            inputProps={
+              Object {
+                "aria-label": "search",
+              }
+            }
+            onChange={[MockFunction]}
+            placeholder="Search…"
+          />
+        </div>
+        <div
+          className="makeStyles-grow-1"
+        />
+      </WithStyles(ForwardRef(Toolbar))>
+    </WithStyles(ForwardRef(Container))>
+  </WithStyles(ForwardRef(AppBar))>
+</div>
+`;
