@@ -1,4 +1,9 @@
-import { makeSelectLocation, selectPath, selectSearchTerm } from '../selectors';
+import {
+  makeSelectLocation,
+  selectPath,
+  selectSearchTerm,
+  selectError,
+} from '../selectors';
 
 describe('makeSelectLocation', () => {
   it('should select the location', () => {
@@ -26,5 +31,12 @@ describe('makeSelectLocation', () => {
       global: { term: 'foo' },
     };
     expect(selectSearchTerm(mockedState)).toEqual('foo');
+  });
+
+  it('should select error message', () => {
+    const mockedState: any = {
+      global: { error: 'Something went wrong' },
+    };
+    expect(selectError(mockedState)).toEqual('Something went wrong');
   });
 });

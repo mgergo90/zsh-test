@@ -20,6 +20,7 @@ const ItemModal = () => {
       onClose={() => dispatch(setSelected(null))}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
+      data-testid="HomePage-ItemModal-Modal"
     >
       <div>
         <ItemPage id={selected.id} />

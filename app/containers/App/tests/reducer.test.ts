@@ -1,5 +1,5 @@
 import appReducer from '../reducer';
-import { setSearchTerm } from '../actions';
+import { setSearchTerm, setErrorMessage } from '../actions';
 import { AppState } from '../types';
 
 describe('appReducer', () => {
@@ -21,5 +21,12 @@ describe('appReducer', () => {
     const expectedResult = { ...state, term };
 
     expect(appReducer(state, setSearchTerm(term))).toEqual(expectedResult);
+  });
+
+  it('should handle the setErrorsMessage action correctly', () => {
+    const error = 'Something went wrong';
+    const expectedResult = { ...state, error };
+
+    expect(appReducer(state, setErrorMessage(error))).toEqual(expectedResult);
   });
 });

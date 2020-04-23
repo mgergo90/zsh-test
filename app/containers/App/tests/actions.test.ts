@@ -15,4 +15,11 @@ describe('Global actions', () => {
       action(ActionTypes.GLOBAL_SET_SEARCH_TERM, term),
     );
   });
+
+  it('should set the error message', () => {
+    const message = 'Something went wrong';
+    expect(actions.setErrorMessage(message)).toEqual(
+      action(ActionTypes.GLOBAL_SET_ERROR_MESSAGE, message),
+    );
+  });
 });

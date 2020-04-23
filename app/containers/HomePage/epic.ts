@@ -27,7 +27,7 @@ export const startSearch = (action$: ActionsObservable<HomePageActions>) =>
         ajax.getJSON(generateOmdbSearchUrl(action.payload)).pipe(
           switchMap((response: any) => {
             if (!response || !response.Search) {
-              throw Error('Search yielded no results');
+              throw Error(response.Error || 'Search yielded no result');
             }
             return of(setResults(response.Search.map(transformMovie)));
           }),
@@ -43,7 +43,7 @@ export const startSearch = (action$: ActionsObservable<HomePageActions>) =>
             ),
           ),
         ),
-        from([setResults([])]),
+        of(setResults([])),
       ),
     ),
   );
@@ -56,8 +56,8 @@ export const loadWiki = (action$: ActionsObservable<HomePageActions>) =>
         () => !!action.payload && !action.payload.wiki,
         ajax.getJSON(genereteWikiSearchUrl(action.payload)).pipe(
           switchMap((response: any) => {
-            if (!response || !response.query.search || !action.payload) {
-              throw Error('Search yielded no results');
+            if (!response || !response.query.search.length || !action.payload) {
+              throw Error('Search yielded no result');
             }
             const firstReslt = response.query.search[0];
             const newItem: Movie = {
@@ -65,20 +65,18 @@ export const loadWiki = (action$: ActionsObservable<HomePageActions>) =>
               wiki: firstReslt.pageid,
               description: firstReslt.snippet,
             };
-            return concat(of(updateResult(newItem)));
+            return of(updateResult(newItem));
           }),
           catchError(error =>
-            concat(
-              of(
-                setWikiError(
-                  error.message ||
-                    'Something went wrong, please try again later.',
-                ),
+            of(
+              setWikiError(
+                error.message ||
+                  'Something went wrong, please try again later.',
               ),
             ),
           ),
         ),
-        from([setWikiError('')]),
+        of(setWikiError('')),
       ),
     ),
   );

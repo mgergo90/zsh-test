@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSearchTerm, selectError } from 'containers/App/selectors';
 import { initSearch } from './actions';
@@ -30,15 +29,15 @@ const HomePage = () => {
     dispatch(initSearch(term));
   }, [term]);
   if (loading) {
-    return <CircularProgress />;
+    return <CircularProgress data-testid="HomePage-index-progress" />;
   }
   if (error) {
-    return <h2>{error}</h2>;
+    return <h2 data-testid="HomePage-index-error">{error}</h2>;
   }
   return (
     <>
       <ItemModal />
-      <Grid container spacing={3}>
+      <Grid container spacing={3} data-testid="HomePage-index-Grid">
         {ids.map(id => (
           <ListItem key={id} id={id} />
         ))}
