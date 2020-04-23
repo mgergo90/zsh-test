@@ -11,8 +11,6 @@ $ yarn start
 
 To run test type the following command:
 
-First Tab:
-
 ```sh
 $ yarn test
 ```
