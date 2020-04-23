@@ -2,10 +2,12 @@ import produce from 'immer';
 import { HomePageState, HomePageActions } from './types';
 import { ActionTypes } from './constants';
 
-// The initial state of the App
 export const initialState: HomePageState = {
   loading: false,
   result: [],
+  selected: null,
+  selectedLoading: false,
+  wikiError: '',
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -20,9 +22,26 @@ const appReducer = (
         break;
       case ActionTypes.HOMEPAGE_SET_RESULTS:
         draft.result = action.payload;
+        draft.loading = false;
         break;
-      case ActionTypes.HOMEPAGE_TOGGLE_LOADING:
-        draft.loading = action.payload;
+      case ActionTypes.HOMEPAGE_SET_SELECTED:
+        draft.selected = action.payload;
+        draft.wikiError = '';
+        draft.selectedLoading = true;
+        break;
+      case ActionTypes.HOMEPAGE_UPDATE_RESULT:
+        draft.selectedLoading = false;
+        draft.wikiError = '';
+        draft.result = draft.result.map(item => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          }
+          return item;
+        });
+        break;
+      case ActionTypes.HOMEPAGE_SET_WIKI_ERROR:
+        draft.wikiError = action.payload;
+        draft.selectedLoading = false;
     }
   });
 

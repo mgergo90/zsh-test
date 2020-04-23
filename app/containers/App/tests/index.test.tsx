@@ -1,9 +1,9 @@
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { createRenderer } from 'react-test-renderer/shallow';
+import { Provider } from 'react-redux';
 
 import App from '../index';
-import { Provider } from 'react-redux';
 
 const renderer = createRenderer();
 

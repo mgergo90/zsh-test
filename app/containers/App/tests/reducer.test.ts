@@ -18,7 +18,7 @@ describe('appReducer', () => {
 
   it('should handle the setSearchTerm action correctly', () => {
     const term = 'term';
-    const expectedResult = { term };
+    const expectedResult = { ...state, term };
 
     expect(appReducer(state, setSearchTerm(term))).toEqual(expectedResult);
   });

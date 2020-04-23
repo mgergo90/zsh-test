@@ -16,3 +16,9 @@ export const makeSelectResultItem = (id: string) =>
 
 export const selectLoading = ({ homePage }: ApplicationRootState) =>
   homePage.loading;
+
+export const selectSelectedItem = ({ homePage }: ApplicationRootState) =>
+  homePage.selected;
+
+export const selectWikiLoading = ({ homePage }: ApplicationRootState) =>
+  homePage.selectedLoading;

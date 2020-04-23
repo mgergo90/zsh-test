@@ -6,24 +6,31 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { makeSelectResultItem } from './selectors';
-import { useCardStyle } from './styles';
+import { makeSelectResultItem, selectWikiLoading } from './selectors';
+import { usePageStyle } from './styles';
 import { setSelected } from './actions';
+import { createStructuredSelector } from 'reselect';
 import { ItemProps } from './types';
 
-const ListItem = ({ id }: ItemProps) => {
-  const item = useSelector(makeSelectResultItem(id));
+const makeSelectors = (id: string) =>
+  createStructuredSelector({
+    item: makeSelectResultItem(id),
+    loading: selectWikiLoading,
+  });
+
+const ItemPage = ({ id }: ItemProps) => {
+  const { item, loading } = useSelector(makeSelectors(id));
   const dispatch = useDispatch();
-  const classes = useCardStyle();
+  const classes = usePageStyle();
 
   if (!item) {
     return null;
   }
 
   return (
-    <Grid item xs={6} sm={3}>
+    <Grid item xs={12} sm={4} className={classes.modal}>
       <Card className={classes.root}>
         <CardActionArea onClick={() => dispatch(setSelected(item))}>
           <CardMedia
@@ -40,6 +47,12 @@ const ListItem = ({ id }: ItemProps) => {
             >
               {item.title}
             </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {loading && <CircularProgress />}
+              {!loading && item.description && (
+                <p dangerouslySetInnerHTML={{ __html: item.description }} />
+              )}
+            </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -49,7 +62,24 @@ const ListItem = ({ id }: ItemProps) => {
             href={`https://www.imdb.com/title/${item.id}`}
             target="_blank"
           >
-            IMDB
+            Imdb
+          </Button>
+          {item.wiki && (
+            <Button
+              size="small"
+              color="primary"
+              href={`https://en.wikipedia.org/?curid=${item.wiki}`}
+              target="_blank"
+            >
+              Wiki
+            </Button>
+          )}
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => dispatch(setSelected(null))}
+          >
+            Close
           </Button>
         </CardActions>
       </Card>
@@ -57,4 +87,4 @@ const ListItem = ({ id }: ItemProps) => {
   );
 };
 
-export default ListItem;
+export default ItemPage;

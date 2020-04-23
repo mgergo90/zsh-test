@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
-import messages from './messages';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSearchTerm, selectError } from 'containers/App/selectors';
 import { initSearch } from './actions';
@@ -13,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectLoading, selectResultsId } from './selectors';
 import { CircularProgress, Grid } from '@material-ui/core';
 import ListItem from './ListItem';
+import ItemModal from './ItemModal';
 
 const selectors = createStructuredSelector({
   term: selectSearchTerm,
@@ -36,11 +36,14 @@ const HomePage = () => {
     return <h2>{error}</h2>;
   }
   return (
-    <Grid container spacing={3}>
-      {ids.map(id => (
-        <ListItem key={id} id={id} />
-      ))}
-    </Grid>
+    <>
+      <ItemModal />
+      <Grid container spacing={3}>
+        {ids.map(id => (
+          <ListItem key={id} id={id} />
+        ))}
+      </Grid>
+    </>
   );
 };
 

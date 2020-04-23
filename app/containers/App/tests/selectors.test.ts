@@ -22,11 +22,8 @@ describe('makeSelectLocation', () => {
   });
 
   it('should select serch term', () => {
-    const global = {
-      global: { term: 'foo' },
-    };
     const mockedState: any = {
-      global,
+      global: { term: 'foo' },
     };
     expect(selectSearchTerm(mockedState)).toEqual('foo');
   });
