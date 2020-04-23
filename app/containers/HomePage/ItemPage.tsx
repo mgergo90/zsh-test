@@ -47,10 +47,10 @@ const ItemPage = ({ id }: ItemProps) => {
             >
               {item.title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" color="textSecondary" component="div">
               {loading && <CircularProgress />}
               {!loading && item.description && (
-                <p dangerouslySetInnerHTML={{ __html: item.description }} />
+                <div dangerouslySetInnerHTML={{ __html: item.description }} />
               )}
             </Typography>
           </CardContent>

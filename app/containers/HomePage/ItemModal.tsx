@@ -13,6 +13,7 @@ const ItemModal = () => {
   if (!selected) {
     return null;
   }
+
   return (
     <Modal
       open={!!selected}
@@ -20,7 +21,9 @@ const ItemModal = () => {
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
-      <ItemPage id={selected.id} />
+      <div>
+        <ItemPage id={selected.id} />
+      </div>
     </Modal>
   );
 };
