@@ -4,6 +4,7 @@ import { ActionType } from 'typesafe-actions';
 export type HomePageActions = ActionType<typeof actions>;
 
 export type SetSelectedAction = ActionType<typeof actions.setSelected>;
+export type StartSearchAction = ActionType<typeof actions.initSearch>;
 
 export interface Movie {
   id: string;
